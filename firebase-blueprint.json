@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User account registration and contact profile details",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string", "description": "The complete name of the user" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "phone": { "type": "string", "description": "Verified WhatsApp or telephone contact" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account registration date" }
+      },
+      "required": ["fullName", "email", "phone"]
+    },
+    "bookings": {
+      "title": "Booking",
+      "description": "Car rental booking request logs",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Auth user UID who placed the booking" },
+        "vehicleId": { "type": "string", "description": "Selected vehicle identifier" },
+        "pickupDate": { "type": "string", "description": "Start of rental" },
+        "dropoffDate": { "type": "string", "description": "End of rental" },
+        "pickupLocation": { "type": "string", "description": "Delivery location ID" },
+        "dropoffLocation": { "type": "string", "description": "Dropoff location ID" },
+        "withDriver": { "type": "boolean", "description": "If chauffeur driver option is added" },
+        "gps": { "type": "boolean", "description": "If offline GPS was requested" },
+        "insurance": { "type": "boolean", "description": "If collision waiver was requested" },
+        "renterName": { "type": "string", "description": "Name of primary renter" },
+        "renterEmail": { "type": "string", "format": "email", "description": "Email address of primary renter" },
+        "renterPhone": { "type": "string", "description": "Contact phone for WhatsApp communications" },
+        "licenseNumber": { "type": "string", "description": "Renter driver license code" },
+        "totalPrice": { "type": "number", "description": "Final estimated price calculation" },
+        "status": { "type": "string", "description": "Booking status" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Date of reservation submission" }
+      },
+      "required": ["vehicleId", "pickupDate", "dropoffDate", "renterName", "renterEmail", "renterPhone", "totalPrice"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profiles indexed by their Auth UID"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "bookings",
+      "description": "Bookings indexed by generated document ID"
+    }
+  }
+}

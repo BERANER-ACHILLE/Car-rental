@@ -1,0 +1,6 @@
+{
+  "name": "FlexiRent RW",
+  "description": "Premium car rental platform for Rwanda featuring bilingual (French/English) support, instant pricing calculator in RWF/USD, travel routing guides, and dynamic booking voucher creation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
